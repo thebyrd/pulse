@@ -17,7 +17,7 @@ The Model
 		* Parks
 		* Beaches
 		
-		* Sports
+		* Sports{teamName, sportName}
 			* ie Bowling, Skating...
 		* Shopping
 		* Events (API?)
