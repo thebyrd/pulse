@@ -19,9 +19,9 @@ app.configure(function(){
    * This gives us access to user session cookies that are stored in a redis db
    * req.session.VALUE
    */
- // var RedisStore = require('connect-redis')(express);
- // app.use(express.cookieParser());
- // app.use(express.session({secret: "Mackey has Game", store: new RedisStore }));
+  var RedisStore = require('connect-redis')(express);
+  app.use(express.cookieParser());
+  app.use(express.session({secret: "Mackey has Game", store: new RedisStore }));
   
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -100,20 +100,6 @@ var DesertSchema = new Schema({
   ,  formalScore   : Number //1 is formal & 0 is casual
 });
 var Desert = mongoose.model("Desert", DesertSchema);
-
-var EntertainmentSchema = new Schema({
-    id            : ObjectId
-  , geodata       : String
-  , name          : {type: String, index: true, required:true}
-  , description   : String
-  , website       : String
-  , averageCost   : {type:Number, min:0}
-  , romanticScore : Number
-  , picturePath   : String
-  , isOutdoors    : Boolean
-  , intensity     : Number //between 0 and 1
-});
-var Entertainment = mongoose.model("Entertainment", EntertainmentSchema);
 
 var ParkSchema = new Schema({
     id            : ObjectId
@@ -251,11 +237,11 @@ var MovieSchema = new Schema({
 var Movie = mongoose.model("Movie", MovieSchema);
 
 var UserSchema = new Schema({
-    id            : ObjectID
+    id            : ObjectId
   , name          : String
   , email         : String
-  , pastPlans     : [Schema.Types.Mixed]//Different plans
-  , pastPlaces    : [Place]
+  , pastPlans     : [Plan]
+  , pastPlaces    : [Schema.Types.Mixed]//Different places
 });
 var User = mongoose.model("User", UserSchema);
  
