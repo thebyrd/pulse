@@ -45,9 +45,9 @@ var Schema = mongoose.Schema
 
 var WeatherSchema = new Schema({
     id            : ObjectId
-  , tempC         : {type:Double, index:true} // in Degrees Celcius
-  , tempF         : {type:Double, index:true} // in Degress Farenheit 
-  , percipitation : {type:Double, min:0, max:1} //expressed as a percent likelyhood
+  , tempC         : {type:Number, index:true} // in Degrees Celcius
+  , tempF         : {type:Number, index:true} // in Degress Farenheit 
+  , percipitation : {type:Number, min:0, max:1} //expressed as a percent likelyhood
   , sunsetTime    : Date
   , sunriseTime   : Date 
 });
@@ -58,7 +58,7 @@ var PlanSchema = new Schema({
     id          : ObjectId
   , places      : [PlaceSchema]
   , description : String
-  , rating      : { type: Double, default:0.5, index:true, min:0, max:1}
+  , rating      : { type: Number, default:0.5, index:true, min:0, max:1}
   , comment     : String
   , date        : { type: Date, default: Date.now, index: true}
 });
@@ -78,8 +78,8 @@ var PlaceSchema = new Schema({
   , name          : {type: String, index: true}
   , description   : String
   , website       : String
-  , averageCost   : Double
-  , romanticScore : Double
+  , averageCost   : Number
+  , romanticScore : Number
   , picturePath   : String
 });
 var Place = mongoose.model('Place', PlaceSchema);
@@ -87,23 +87,23 @@ var Place = mongoose.model('Place', PlaceSchema);
 //Food{genre, polarity}
 var FoodSchema = new PlaceSchema({
     genre    : String
-  , polarity : Double
+  , polarity : Number
 });
 var Food = mongoose.model('Food', FoodSchema);
 
 var RestaurantSchema = new FoodSchema({
-    formalScore : Double //1 is formal & 0 is casual
+    formalScore : Number //1 is formal & 0 is casual
 }); 
 var Restaurant = mongoose.model("Restaurant", RestaurantSchema);
 
 var DesertSchema = new FoodSchema({
-    formalScore : Double //1 is formal & 0 is casual
+    formalScore : Number //1 is formal & 0 is casual
 });
 var Desert = mongoose.model("Desert", DesertSchema);
 
 var EntertainmentSchema = new PlaceSchema({
     isOutdoors  : Boolean
-  , intensity : Double //between 0 and 1
+  , intensity : Number //between 0 and 1
 });
 var Entertainment = mongoose.model("Entertainment", EntertainmentSchema);
 
@@ -128,22 +128,22 @@ var ShoppingSchema = new EntertainmentSchema({});
 var Shopping = mongoose.model("Shopping", ShoppingSchema);
 
 var ConcertSchema = new EntertianmentSchema({
-    ticketprice  : Double
+    ticketprice  : Number
 });
 var Concert = mongoose.model("Concert", ConcertSchema);
 
 var MuseumSchema = new EntertianmentSchema({
-    ticketprice  : Double
+    ticketprice  : Number
 });
 var Museum = mongoose.model("Museum", MuseumSchema);
 
 var BarSchema = new EntertianmentSchema({
-    formalScore  : Double //1 for formal 0 for casual
+    formalScore  : Number //1 for formal 0 for casual
 });
 var Bar = mongoose.model("Bar", BarSchema);
 
 var ClubSchema = new EntertianmentSchema({
-    formalScore  : Double //1 for formal 0 for casual
+    formalScore  : Number //1 for formal 0 for casual
 });
 var Club = mongoose.model("Club", ClubSchema);
 
