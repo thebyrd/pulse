@@ -10,12 +10,12 @@ The Model
 * Place {id, geodata, name, description, website, cost, romance, pictures}
 	* Food {genre, mildness/strong}
 		* Restaurant
-			* Fast Food
-			* Casual Sit Down
-			* Formal (anniversary type etc)
-		* Deserts
-			* Casual
-			* Fancy
+			* Fast Food Restaurant
+			* Casual Sit Down Restaurant
+			* Formal Restaurant (anniversary type etc)
+		* Desert
+			* CasualDesert
+			* FormalDesert
 		* Cafes
 			
   	* Entertainment {physical intensity}
