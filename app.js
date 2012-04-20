@@ -26,7 +26,7 @@ app.configure(function(){
   
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(app.router);
+  //app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
 
@@ -41,10 +41,96 @@ app.configure('production', function(){
 // Model
 mongoose.connect('mongodb://localhost/27017');
 
+var Schema = mongoose.Schema
+  , ObjectId = Schema.ObjectId;
 
+var WeatherSchema = new Schema({
+    id            : ObjectId
+  , tempC         : Double // in Degrees Celcius
+  , tempF         : Double // in Degress Farenheit 
+  , percipitation : Double //expressed as a percent likelyhood
+  , sunsetTime    : Date
+  , sunriseTime   : Date 
+});
+var Weather = mongoose.model('Weather', WeatherSchema);
+
+//Plan {id, places, descriptions (optional), rating, comment, date}
+var PlanSchema = new Schema({
+    id          : ObjectId
+  , places      : [Place]
+  , description : String
+  , rating      : { type: Double, default:0.5, index:true}
+  , comment     : String
+  , date        : { type: Date, default: Date.now, index: true}
+});
+var Plan = mongoose.model('Plan', PlanSchema);
+
+//Syntax Reminder
+//var instance = new Plan();
+//instance.save(function(err){});
+//Plan.find({}, function(err, docs){
+// docs.forEach
+//});  
+
+//Place {id, geodata, name, description, website, cost, romance, pictures}
+var PlaceSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true}
+  , description   : String
+  , website       : String
+  , averageCost   : Double
+  , romanticScore : Double
+  , picturePath   : String
+});
+var Place = mongoose.model('Place', PlaceSchema);
+
+//Food{genre, polarity}
+var FoodSchema = new PlaceSchema({
+    genre    : String
+  , polarity : Double
+});
+var Food = mongoose.model('Food', FoodSchema);
+
+var RestaurantSchema = new FoodSchema({
+    formalScore : Double //1 is formal & 0 is casual
+}); 
+var Restaurant = mongoose.model("Restaurant", RestaurantSchema);
+
+var DesertSchema = new FoodSchema({
+    formalScore : Double //1 is formal & 0 is casual
+});
+var Desert = mongoose.model("Desert", DesertSchema);
+
+var EntertainmentSchema = new PlaceSchema({
+    isOutdoors  : Boolean
+  , intensity : Double //between 0 and 1
+});
+var Entertainment = mongoose.model("Entertainment", EntertainmentSchema);
+
+var ParkSchema = new EntertainmentSchema({
+  weather : [Weather]
+});
+var Park = mongoose.model("Park", ParkSchema);
+
+var BeachSchema = new EntertainmentSchema({
+  weather : [Weather]
+});
+var Beach = mongoose.model("Beach", BeachSchema);
+
+var SportsSchema = new EntertainmentSchema({
+    teamName : String
+  , sportName    : String
+}); 
+var Sports = mongoose.model("Sports", SportsSchema);
+
+var ShoppingSchema = new EntertainmentSchema({
+  
+});
 // Routes
-
-app.get('/', routes.index);
+app.get('/', function(req, res){
+  res.send("Hello World");
+});
 app.get('/hello',function(req, res){
   res.send("Hello World");
 });
