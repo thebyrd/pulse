@@ -66,7 +66,8 @@ var Plan = mongoose.model('Plan', PlanSchema);
 
 //Syntax Reminder
 //var instance = new Plan();
-//instance.save(function(err){});
+//instance.save(function(err){
+//});
 //Plan.find({}, function(err, docs){
 // docs.forEach
 //});  
@@ -236,6 +237,20 @@ var MovieSchema = new Schema({
 });
 var Movie = mongoose.model("Movie", MovieSchema);
 
+var ReqSportsSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+  , isOutdoors    : Boolean
+  , intensity     : Number //between 0 and 1
+});
+var ReqSports = mongoose.model("ReqSports", ReqSportsSchema);
+
 var UserSchema = new Schema({
     id            : ObjectId
   , name          : String
@@ -249,8 +264,8 @@ var User = mongoose.model("User", UserSchema);
 app.get('/', function(req, res){
   res.send("Hello World");
 });
-app.get('/hello',function(req, res){
-  res.send("Hello World");
+app.get('/hello/:name',function(req, res){
+  res.send("Hello "+req.params.name);
 });
 
 app.listen(3000, function(){
