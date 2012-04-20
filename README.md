@@ -3,8 +3,8 @@ pulse
 
 It helps you figure out what you&#39;re going to do tonight
 
-Do what planner
----------------
+The Model
+---------
 
 * Plan {id, places, descriptions (optional), rating, comment}
 * Place {id, geodata, name, description, website, cost, romance, pictures}
