@@ -18,15 +18,9 @@ The Model
 		* Beaches
 		
 		* Sports{teamName, sportName}
-			* ie Bowling, Skating...
 		* Shopping
-		* Events (API?)
-			* Concerts
-			* Musicals
-			* Sporting events
-		* Cultural
-			* Museums
-			* Cultural walks		
+		* Concerts
+		* Museums	
 		* Bars & Clubs {formalScore (1 for formal and 0 for casual}
 			* Bars
 			* Clubs
