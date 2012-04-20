@@ -25,5 +25,5 @@ The Model
 			* Bars
 			* Clubs
 		* Movies (API)			
-* User {id, name, email, history, dates, followers, following}
+* User {id, name, email, pastPlans}
 
