@@ -56,7 +56,7 @@ var Weather = mongoose.model('Weather', WeatherSchema);
 //Plan {id, places, descriptions (optional), rating, comment, date}
 var PlanSchema = new Schema({
     id          : ObjectId
-  , places      : [PlaceSchema]
+  , places      : [Schema.Types.Mixed]//A bunch of PlaceSchemas
   , description : String
   , rating      : { type: Number, default:0.5, index:true, min:0, max:1}
   , comment     : String
@@ -71,93 +71,191 @@ var Plan = mongoose.model('Plan', PlanSchema);
 // docs.forEach
 //});  
 
-//Place {id, geodata, name, description, website, cost, romance, pictures}
-var PlaceSchema = new Schema({
+var RestaurantSchema = new Schema({
     id            : ObjectId
   , geodata       : String
-  , name          : {type: String, index: true}
+  , name          : {type: String, index: true, required:true}
   , description   : String
   , website       : String
-  , averageCost   : Number
+  , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-});
-var Place = mongoose.model('Place', PlaceSchema);
-
-//Food{genre, polarity}
-var FoodSchema = new PlaceSchema({
-    genre    : String
-  , polarity : Number
-});
-var Food = mongoose.model('Food', FoodSchema);
-
-var RestaurantSchema = new FoodSchema({
-    formalScore : Number //1 is formal & 0 is casual
+    genre         : String
+  , polarity      : Number
+    formalScore   : Number //1 is formal & 0 is casual
 }); 
 var Restaurant = mongoose.model("Restaurant", RestaurantSchema);
 
-var DesertSchema = new FoodSchema({
-    formalScore : Number //1 is formal & 0 is casual
+var DesertSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+    genre         : String
+  , polarity      : Number
+    formalScore   : Number //1 is formal & 0 is casual
 });
 var Desert = mongoose.model("Desert", DesertSchema);
 
-var EntertainmentSchema = new PlaceSchema({
-    isOutdoors  : Boolean
-  , intensity : Number //between 0 and 1
+var EntertainmentSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+    isOutdoors    : Boolean
+  , intensity     : Number //between 0 and 1
 });
 var Entertainment = mongoose.model("Entertainment", EntertainmentSchema);
 
-var ParkSchema = new EntertainmentSchema({
-    weather : [WeatherSchema]
+var ParkSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+    isOutdoors    : Boolean
+  , intensity     : Number //between 0 and 1
+    weather       : [WeatherSchema]
 });
 var Park = mongoose.model("Park", ParkSchema);
 
-var BeachSchema = new EntertainmentSchema({
+var BeachSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+    isOutdoors    : Boolean
+  , intensity     : Number //between 0 and 1
     weather : [WeatherSchema]
 });
 var Beach = mongoose.model("Beach", BeachSchema);
 
-var SportSchema = new EntertainmentSchema({
+var SportSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+    isOutdoors    : Boolean
+  , intensity     : Number //between 0 and 1
     teamName     : String
   , sportName    : String
   , weather      : [WeatherSchema]
 }); 
 var Sport = mongoose.model("Sport", SportSchema);
 
-var ShoppingSchema = new EntertainmentSchema({});
+var ShoppingSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+    isOutdoors    : Boolean
+  , intensity     : Number //between 0 and 1
+});
 var Shopping = mongoose.model("Shopping", ShoppingSchema);
 
-var ConcertSchema = new EntertianmentSchema({
+var ConcertSchema = new Schema({
+        id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+    isOutdoors    : Boolean
+  , intensity     : Number //between 0 and 1
     ticketprice  : Number
 });
 var Concert = mongoose.model("Concert", ConcertSchema);
 
-var MuseumSchema = new EntertianmentSchema({
+var MuseumSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+    isOutdoors    : Boolean
+  , intensity     : Number //between 0 and 1
     ticketprice  : Number
 });
 var Museum = mongoose.model("Museum", MuseumSchema);
 
-var BarSchema = new EntertianmentSchema({
-    formalScore  : Number //1 for formal 0 for casual
+var BarSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+    isOutdoors    : Boolean
+  , intensity     : Number //between 0 and 1
+    formalScore   : Number //1 for formal 0 for casual
 });
 var Bar = mongoose.model("Bar", BarSchema);
 
-var ClubSchema = new EntertianmentSchema({
-    formalScore  : Number //1 for formal 0 for casual
+var ClubSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+    isOutdoors    : Boolean
+  , intensity     : Number //between 0 and 1
+    formalScore   : Number //1 for formal 0 for casual
 });
 var Club = mongoose.model("Club", ClubSchema);
 
-var MovieSchema = new EntertianmentSchema({
-    
+var MovieSchema = new Schema({
+    id            : ObjectId
+  , geodata       : String
+  , name          : {type: String, index: true, required:true}
+  , description   : String
+  , website       : String
+  , averageCost   : {type:Number, min:0}
+  , romanticScore : Number
+  , picturePath   : String
+    isOutdoors    : Boolean
+  , intensity     : Number //between 0 and 1
 });
 var Movie = mongoose.model("Movie", MovieSchema);
 
 var UserSchema = new Schema({
-    id      : ObjectID
-  , name    : String
-  , email   : String
-  , pastPlans : [PlanSchema]
-  , 
+    id            : ObjectID
+  , name          : String
+  , email         : String
+  , pastPlans     : [Schema.Types.Mixed]//Different plans
+  , pastPlaces    : [Place]
 });
 var User = mongoose.model("User", UserSchema);
  
