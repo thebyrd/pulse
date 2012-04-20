@@ -13,10 +13,9 @@ The Model
 		* Desert {formalScore (1 for formal and 0 for casual}
 		* Cafes
 			
-  	* Entertainment {physical intensity}
-		* Outdoor
-			* Parks
-			* Beaches
+  	* Entertainment {physicalIntensity, isOutdoors}
+		* Parks
+		* Beaches
 		
 		* Sports
 			* ie Bowling, Skating...
