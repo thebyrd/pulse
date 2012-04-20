@@ -7,7 +7,6 @@ Do what planner
 ---------------
 
 Plan {id, places, descriptions (optional), rating, comment}
-
 Place {id, geodata, name, description, website, cost, romance, pictures}
   Food {genre, mildness/strong}
 		Restaurant
@@ -19,7 +18,7 @@ Place {id, geodata, name, description, website, cost, romance, pictures}
 			Fancy
 		Cafes
 			
-	Entertainment {physical intensity}
+  Entertainment {physical intensity}
 		Outdoor
 			Parks
 			Beaches
@@ -38,7 +37,6 @@ Place {id, geodata, name, description, website, cost, romance, pictures}
 		Bars & Clubs
 			Bars
 			Clubs
-		Movies (API)
-			
-User {id, name, email, history, dates, followers, following}
+		Movies (API)			
+  User {id, name, email, history, dates, followers, following}
 
