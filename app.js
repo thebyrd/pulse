@@ -5,7 +5,6 @@
 
 //Module Dependencies
 var express = require('express')
-  , routes = require('./routes')
   , mongoose = require('mongoose');
 
 var app = module.exports = express.createServer();
