@@ -9,13 +9,8 @@ The Model
 * Plan {id, places, descriptions (optional), rating, comment, date}
 * Place {id, geodata, name, description, website, cost, romance, pictures}
 	* Food {genre, mildness/strong}
-		* Restaurant
-			* Fast Food Restaurant
-			* Casual Sit Down Restaurant
-			* Formal Restaurant (anniversary type etc)
-		* Desert
-			* CasualDesert
-			* FormalDesert
+		* Restaurant {formalScore (1 for formal and 0 for casual}
+		* Desert {formalScore (1 for formal and 0 for casual}
 		* Cafes
 			
   	* Entertainment {physical intensity}
@@ -33,7 +28,7 @@ The Model
 		* Cultural
 			* Museums
 			* Cultural walks		
-		* Bars & Clubs
+		* Bars & Clubs {formalScore (1 for formal and 0 for casual}
 			* Bars
 			* Clubs
 		* Movies (API)			
