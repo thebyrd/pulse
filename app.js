@@ -39,9 +39,7 @@ app.configure('production', function(){
 });
 
 // Model
-mongoose.connect('mongodb://localhost/');
-var
-
+mongoose.connect('mongodb://localhost/27017');
 
 
 // Routes
