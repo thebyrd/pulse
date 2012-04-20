@@ -19,7 +19,7 @@ The Model
 		
 		* Sports{teamName, sportName}
 		* Shopping
-		* Concerts
+		* Concerts {ticketPrice}
 		* Museums	
 		* Bars & Clubs {formalScore (1 for formal and 0 for casual}
 			* Bars
