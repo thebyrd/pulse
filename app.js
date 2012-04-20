@@ -80,9 +80,9 @@ var RestaurantSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    genre         : String
+  ,  genre         : String
   , polarity      : Number
-    formalScore   : Number //1 is formal & 0 is casual
+  ,  formalScore   : Number //1 is formal & 0 is casual
 }); 
 var Restaurant = mongoose.model("Restaurant", RestaurantSchema);
 
@@ -95,9 +95,9 @@ var DesertSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    genre         : String
+  ,  genre         : String
   , polarity      : Number
-    formalScore   : Number //1 is formal & 0 is casual
+  ,  formalScore   : Number //1 is formal & 0 is casual
 });
 var Desert = mongoose.model("Desert", DesertSchema);
 
@@ -110,7 +110,7 @@ var EntertainmentSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    isOutdoors    : Boolean
+  , isOutdoors    : Boolean
   , intensity     : Number //between 0 and 1
 });
 var Entertainment = mongoose.model("Entertainment", EntertainmentSchema);
@@ -124,9 +124,9 @@ var ParkSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    isOutdoors    : Boolean
+  , isOutdoors    : Boolean
   , intensity     : Number //between 0 and 1
-    weather       : [WeatherSchema]
+  , weather       : [WeatherSchema]
 });
 var Park = mongoose.model("Park", ParkSchema);
 
@@ -139,9 +139,9 @@ var BeachSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    isOutdoors    : Boolean
+  , isOutdoors    : Boolean
   , intensity     : Number //between 0 and 1
-    weather : [WeatherSchema]
+  , weather : [WeatherSchema]
 });
 var Beach = mongoose.model("Beach", BeachSchema);
 
@@ -154,9 +154,9 @@ var SportSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    isOutdoors    : Boolean
+  , isOutdoors    : Boolean
   , intensity     : Number //between 0 and 1
-    teamName     : String
+  , teamName     : String
   , sportName    : String
   , weather      : [WeatherSchema]
 }); 
@@ -171,13 +171,13 @@ var ShoppingSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    isOutdoors    : Boolean
+  , isOutdoors    : Boolean
   , intensity     : Number //between 0 and 1
 });
 var Shopping = mongoose.model("Shopping", ShoppingSchema);
 
 var ConcertSchema = new Schema({
-        id            : ObjectId
+    id            : ObjectId
   , geodata       : String
   , name          : {type: String, index: true, required:true}
   , description   : String
@@ -185,9 +185,9 @@ var ConcertSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    isOutdoors    : Boolean
+  , isOutdoors    : Boolean
   , intensity     : Number //between 0 and 1
-    ticketprice  : Number
+  , ticketprice  : Number
 });
 var Concert = mongoose.model("Concert", ConcertSchema);
 
@@ -200,9 +200,9 @@ var MuseumSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    isOutdoors    : Boolean
+  , isOutdoors    : Boolean
   , intensity     : Number //between 0 and 1
-    ticketprice  : Number
+  , ticketprice  : Number
 });
 var Museum = mongoose.model("Museum", MuseumSchema);
 
@@ -215,9 +215,9 @@ var BarSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    isOutdoors    : Boolean
+  , isOutdoors    : Boolean
   , intensity     : Number //between 0 and 1
-    formalScore   : Number //1 for formal 0 for casual
+  , formalScore   : Number //1 for formal 0 for casual
 });
 var Bar = mongoose.model("Bar", BarSchema);
 
@@ -230,9 +230,9 @@ var ClubSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    isOutdoors    : Boolean
+  , isOutdoors    : Boolean
   , intensity     : Number //between 0 and 1
-    formalScore   : Number //1 for formal 0 for casual
+  , formalScore   : Number //1 for formal 0 for casual
 });
 var Club = mongoose.model("Club", ClubSchema);
 
@@ -245,7 +245,7 @@ var MovieSchema = new Schema({
   , averageCost   : {type:Number, min:0}
   , romanticScore : Number
   , picturePath   : String
-    isOutdoors    : Boolean
+  , isOutdoors    : Boolean
   , intensity     : Number //between 0 and 1
 });
 var Movie = mongoose.model("Movie", MovieSchema);
