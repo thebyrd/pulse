@@ -12,7 +12,7 @@ The Model
 		* Restaurant
 			* Fast Food
 			* Casual Sit Down
-			* Fancy (anniversary type etc)
+			* Formal (anniversary type etc)
 		* Deserts
 			* Casual
 			* Fancy
