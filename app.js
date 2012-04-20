@@ -46,9 +46,9 @@ var Schema = mongoose.Schema
 
 var WeatherSchema = new Schema({
     id            : ObjectId
-  , tempC         : Double // in Degrees Celcius
-  , tempF         : Double // in Degress Farenheit 
-  , percipitation : Double //expressed as a percent likelyhood
+  , tempC         : {type:Double, index:true} // in Degrees Celcius
+  , tempF         : {type:Double, index:true} // in Degress Farenheit 
+  , percipitation : {type:Double, min:0, max:1} //expressed as a percent likelyhood
   , sunsetTime    : Date
   , sunriseTime   : Date 
 });
@@ -57,9 +57,9 @@ var Weather = mongoose.model('Weather', WeatherSchema);
 //Plan {id, places, descriptions (optional), rating, comment, date}
 var PlanSchema = new Schema({
     id          : ObjectId
-  , places      : [Place]
+  , places      : [PlaceSchema]
   , description : String
-  , rating      : { type: Double, default:0.5, index:true}
+  , rating      : { type: Double, default:0.5, index:true, min:0, max:1}
   , comment     : String
   , date        : { type: Date, default: Date.now, index: true}
 });
@@ -109,24 +109,59 @@ var EntertainmentSchema = new PlaceSchema({
 var Entertainment = mongoose.model("Entertainment", EntertainmentSchema);
 
 var ParkSchema = new EntertainmentSchema({
-  weather : [Weather]
+    weather : [WeatherSchema]
 });
 var Park = mongoose.model("Park", ParkSchema);
 
 var BeachSchema = new EntertainmentSchema({
-  weather : [Weather]
+    weather : [WeatherSchema]
 });
 var Beach = mongoose.model("Beach", BeachSchema);
 
-var SportsSchema = new EntertainmentSchema({
-    teamName : String
+var SportSchema = new EntertainmentSchema({
+    teamName     : String
   , sportName    : String
+  , weather      : [WeatherSchema]
 }); 
-var Sports = mongoose.model("Sports", SportsSchema);
+var Sport = mongoose.model("Sport", SportSchema);
 
-var ShoppingSchema = new EntertainmentSchema({
-  
+var ShoppingSchema = new EntertainmentSchema({});
+var Shopping = mongoose.model("Shopping", ShoppingSchema);
+
+var ConcertSchema = new EntertianmentSchema({
+    ticketprice  : Double
 });
+var Concert = mongoose.model("Concert", ConcertSchema);
+
+var MuseumSchema = new EntertianmentSchema({
+    ticketprice  : Double
+});
+var Museum = mongoose.model("Museum", MuseumSchema);
+
+var BarSchema = new EntertianmentSchema({
+    formalScore  : Double //1 for formal 0 for casual
+});
+var Bar = mongoose.model("Bar", BarSchema);
+
+var ClubSchema = new EntertianmentSchema({
+    formalScore  : Double //1 for formal 0 for casual
+});
+var Club = mongoose.model("Club", ClubSchema);
+
+var MovieSchema = new EntertianmentSchema({
+    
+});
+var Movie = mongoose.model("Movie", MovieSchema);
+
+var UserSchema = new Schema({
+    id      : ObjectID
+  , name    : String
+  , email   : String
+  , pastPlans : [PlanSchema]
+  , 
+});
+var User = mongoose.model("User", UserSchema);
+ 
 // Routes
 app.get('/', function(req, res){
   res.send("Hello World");
